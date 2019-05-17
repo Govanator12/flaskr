@@ -1,0 +1,27 @@
+.container {
+  margin-top: 100px;
+}
+
+input {
+  width: 100%;
+  margin-top: 20px;
+}
+
+h2 {
+  text-align: center;
+}
+
+.card {
+  margin-top: 25px;
+}
+
+.card-title {
+  font-weight: bold;
+  font-size: 30px;
+  padding: 10px 5px;
+}
+
+.card-text {
+  font-size: 25px;
+  padding: 25px;
+}

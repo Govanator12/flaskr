@@ -18,11 +18,10 @@ h2 {
 .card-title {
   font-weight: bold;
   font-size: 30px;
-  padding: 10px 5px;
+  padding: 15px 10px;
 }
 
-.card-text {
-  font-size: 25px;
+.card-img {
   padding: 25px;
 }
 

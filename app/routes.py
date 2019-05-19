@@ -14,25 +14,23 @@ def index():
 
     def getImageURL(id):
 
-        url = f'http://api.flickr.com/services/rest/?method=flickr.photos.getSizes&api_key={API_KEY}&photo_id={id}&format=json&nojsoncallback=1'
+        url = f'https://api.flickr.com/services/rest/?method=flickr.photos.getSizes&api_key={API_KEY}&photo_id={id}&format=json&nojsoncallback=1'
 
         response = requests.get(url).json()
 
+        ans = response['sizes']['size'][-1]['source']
 
-        for i in range(len( response['sizes']['size'])):
-            ans = ''
-            if response['sizes']['size'][i]['label'] == 'Original':
-                ans = response['sizes']['size'][i]['source']
-        ans.replace("\\", "")
-        return ans
+        if ans:
+            return ans
+        else:
+            return 'http://placehold.it/250x250'
 
     if form.validate_on_submit():
         text = form.search.data
 
-        url = f'http://api.flickr.com/services/rest/?method=flickr.photos.search&api_key={API_KEY}&text={text}&sort=interestingness-desc&privacy_filter=1&format=json&nojsoncallback=1'
+        url = f'https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key={API_KEY}&text={text}&sort=interestingness-desc&privacy_filter=1&format=json&nojsoncallback=1'
 
         response = requests.get(url).json()
-        print(response['photos']['photo'])
 
         for i in range(len(response['photos']['photo'])):
             id = response['photos']['photo'][i]['id']

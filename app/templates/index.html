@@ -1,4 +1,37 @@
+{% import 'bootstrap/wtf.html' as wtf %}
 {% extends 'base.html' %}
 
 {% block app_content %}
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4 offset-md-4">
+        {{ wtf.quick_form(form) }}
+      </div>
+    </div>
+
+
+    {% if response %}
+      <div class="row">
+        <div class="col-md-4" id="results">
+          <h2>Results:</h2>
+        </div>
+      </div>
+
+
+      <main>
+        <div class="row">
+          {% for p in photos %}
+            <div class="col-md-4">
+              <div class="card">
+                <a href="{{ p.url }}">
+                  <img src="{{ p.url }}" alt="{{ p.title }}" class="card-img">
+                </a>
+                <div class="card-title">{{ p.title }}</div>
+              </div> <!-- ends card -->
+            </div> <!-- ends col 4 -->
+          {% endfor %}
+        </div> <!-- ends row -->
+      </main>
+    {% endif %}
+  </div> <!-- ends container -->
 {% endblock %}
